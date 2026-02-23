@@ -18,8 +18,9 @@ pipeline {
 
          stage('Static Code Analysis') {
             steps {
+                cleanWs()
                 sh 'echo "Running static code analysis..."'
-                sh 'npm ci'
+                sh 'npm run install'
                 sh 'npm run lint'
             }
         }      
