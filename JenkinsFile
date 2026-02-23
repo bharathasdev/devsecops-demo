@@ -2,10 +2,13 @@ pipeline {
     agent 
     {
         docker { image 'ubuntu:24.04' }
+        
     }
     stages {
         stage('Checkout') {
             steps {
+                sh 'echo node --version'
+                sh 'echo npm --version'
                 sh 'echo checkout repo'
                 git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
 
