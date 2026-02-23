@@ -1,7 +1,7 @@
 pipeline {
     agent 
     {
-        docker { image 'ubuntu/node:18-24.04_edge' }
+        docker { image 'node:16-alpine' }
         
     }
     stages {
