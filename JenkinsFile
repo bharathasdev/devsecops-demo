@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                sh 'echo checkout repo'
+                
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                sh 'echo "Running unit tests..."'
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                sh 'echo "Running static code analysis..."'
+            }
+        }        
+        
+        stage('Build') {
+            steps {
+                sh 'echo "Building..."'
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                sh 'echo "Building Docker image..."'
+            }
+        }
+  
+
+        stage('scan Image') {
+            steps {
+                sh 'echo "Scanning for vulnerabilities..."'
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                sh 'echo "Pushing Docker image to registry..."'
+            }
+        }
+
+        stage('Update-K8s-Deployment'){
+            steps {
+                sh 'echo "Updating Kubernetes deployment..."'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'echo "Testing..."'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying..."'
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
