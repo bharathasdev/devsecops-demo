@@ -9,21 +9,21 @@ pipeline {
         
     }
     stages {
-        stage('Checkout') {
-            steps {
-                sh 'node --version'
-                sh 'npm --version'
-                sh 'echo checkout repo'
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/jenkins']],
-                    userRemoteConfigs: [[url: 'https://github.com/bharathasdev/devsecops-demo.git']]
-                ])
-                // git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
+        // stage('Checkout') {
+        //     steps {
+        //         sh 'node --version'
+        //         sh 'npm --version'
+        //         sh 'echo checkout repo'
+        //         checkout([
+        //             $class: 'GitSCM',
+        //             branches: [[name: '*/jenkins']],
+        //             userRemoteConfigs: [[url: 'https://github.com/bharathasdev/devsecops-demo.git']]
+        //         ])
+        //         // git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
 
 
-            }
-        }
+        //     }
+        // }
 
          stage('Static Code Analysis') {
             steps {
