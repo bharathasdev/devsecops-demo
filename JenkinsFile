@@ -10,6 +10,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npm --version'
                 sh 'echo checkout repo'
+                sh 'sudo chown -R 111:113 "/.npm
                 git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
 
 
