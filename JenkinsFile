@@ -2,7 +2,7 @@ pipeline {
     agent 
     {
         docker { 
-            image 'node:20-slim'
+            image 'node:20'
             args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
             reuseNode true
         }
@@ -14,7 +14,12 @@ pipeline {
                 sh 'node --version'
                 sh 'npm --version'
                 sh 'echo checkout repo'
-                git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/jenkins']],
+                    userRemoteConfigs: [[url: 'https://github.com/bharathasdev/devsecops-demo.git']]
+                ])
+                // git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
 
 
             }
@@ -22,9 +27,9 @@ pipeline {
 
          stage('Static Code Analysis') {
             steps {
-                cleanWs()
+                
                 sh 'echo "Running static code analysis..."'
-                sh 'npm run install'
+                sh 'npm install'
                 sh 'npm run lint'
             }
         }      
