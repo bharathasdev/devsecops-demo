@@ -16,19 +16,23 @@ pipeline {
             }
         }
 
+         stage('Static Code Analysis') {
+            steps {
+                sh 'echo "Running static code analysis..."'
+                sh 'npm ci'
+                sh 'npm run lint'
+            }
+        }      
+
         stage('Unit Test') {
             steps {
                 cleanWs()
-                sh 'echo "Running unit tests..."'
-                sh 'npm install'
+                sh 'echo "Running unit tests..."'               
+                sh 'npm test'
                 
             }
         }
-        stage('Static Code Analysis') {
-            steps {
-                sh 'echo "Running static code analysis..."'
-            }
-        }        
+         
         
         stage('Build') {
             steps {
