@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'echo node --version'
-                sh 'echo npm --version'
+                sh 'node --version'
+                sh 'npm --version'
                 sh 'echo checkout repo'
                 git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
 
