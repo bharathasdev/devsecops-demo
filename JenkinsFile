@@ -36,7 +36,7 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                cleanWs()
+               
                 sh 'echo "Running unit tests..."'               
                 sh 'npm test'
                 
