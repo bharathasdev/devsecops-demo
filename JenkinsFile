@@ -5,7 +5,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 sh 'echo checkout repo'
-                
+                git branch: 'jenkins', url: 'https://github.com/bharathasdev/devsecops-demo.git'
+
+
             }
         }
 
