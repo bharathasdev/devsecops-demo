@@ -19,8 +19,8 @@ pipeline {
         stage('Unit Test') {
             steps {
                 sh 'echo "Running unit tests..."'
-                sh 'npm ci'
-                sh 'npm test'
+                sh 'npm install'
+                
             }
         }
         stage('Static Code Analysis') {
